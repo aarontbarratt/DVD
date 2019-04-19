@@ -2,10 +2,8 @@ from dice import Dice
 
 
 def main():
-    dice = Dice(1, 6)
-
-    while True:
-        print(dice.roll())
+    six_dye = Dice(1, 6)
+    print(six_dye.roll(2))
 
 
 main()
