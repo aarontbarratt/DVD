@@ -2,29 +2,34 @@ import random
 
 
 class Dice:
-    def __init__(self, min_roll, max_roll):
-        self.min_roll = min_roll
-        self.max_roll = max_roll
-        self.number_of_rolls = 1
-        self.result = 0
-        self.total = 0
 
-    def roll_additive(self, number_of_rolls):
-        self.number_of_rolls = number_of_rolls
+    def __init__(self, sides):
+        self.sides = sides
+        self.name = 'd' + str(sides)
+        self.rolls = []
+        self.roll_total = 0
 
-        for x in range(0, self.number_of_rolls):
-            self.result = random.randint(self.min_roll, self.max_roll)
-            self.total = self.total + self.result
-        return self.total
+    def roll(self, attempts=1, mode=0):
 
-    def roll_multiplicative(self, number_of_rolls):
-        self.number_of_rolls = number_of_rolls
+        # default mode 0, returns sum of all rolls
+        if mode == 0:
+            for _x in range(0, attempts):
+                roll_value = random.randint(1, self.sides)
+                self.roll_total = self.roll_total + roll_value
+                self.rolls.append(roll_value)
 
-        for x in range(0, self.number_of_rolls):
-            self.result = random.randint(self.min_roll, self.max_roll)
-            if x == 0:
-                self.total = self.result
-            else:
-                self.total = self.total * self.result
+            return self.roll_total
 
-        return self.total
+        # mode 1 returns the highest value
+        if mode == 1:
+            for _x in range(0, attempts):
+                roll_value = random.randint(1, self.sides)
+                self.rolls.append(roll_value)
+            return max(self.rolls)
+
+        # mode 2 returns the lowest value
+        if mode == 2:
+            for _x in range(0, attempts):
+                roll_value = random.randint(1, self.sides)
+                self.rolls.append(roll_value)
+            return min(self.rolls)
