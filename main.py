@@ -15,7 +15,8 @@ class PlayerState(Enum):
 class Command(Enum):
     look = 0
     walk = 1
-    exit = 999
+    help = 1000
+    exit = 1001
 
 
 def inputs(prompt):
@@ -24,6 +25,9 @@ def inputs(prompt):
     elif prompt == Command.exit.name:
         print('Goodbye! Thank you for playing.')
         exit()
+    elif prompt == Command.help.name:
+        for command_ in Command:
+            print(command_.name)
     else:
         print(player.name + ' does not know what ' + '"' + str(prompt) + '"' + ' means')
 
@@ -42,10 +46,10 @@ game_state = GameState.on
 
 # first text the player sees
 print('You wake up in a room that looks your grandma\'s mayo jar, and smells like grandma... \n...\n...\n...\nYou'
-      ' scratch your head and attempt to remember your name. Your name is:', end='')
+      ' scratch your head and attempt to remember your name. Your name is:', end=' ')
 # get player name and create player class with it
 player_name = input()
-player = Player(player_name.lower())
+player = Player(player_name.lower().strip())
 
 # set player status to spawned
 player_state = PlayerState.spawned
