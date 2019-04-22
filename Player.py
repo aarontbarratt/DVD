@@ -1,4 +1,5 @@
 from dice import Dice
+from dice import Modes
 from inventory import Inventory
 
 d6 = Dice(6)
@@ -17,9 +18,9 @@ class Player:
 
     def roll_stats(self):
         # roll twice, use highest roll as stat
-        self.life = d20.roll(2, 1)
-        self.strength = d12.roll(2, 1)
-        self.dex = d12.roll(2, 1)
+        self.life = d20.roll(2, Modes.highest)
+        self.strength = d12.roll(2, Modes.highest)
+        self.dex = d12.roll(2, Modes.highest)
 
         # return results in list
         return self.life, self.strength, self.dex
