@@ -18,11 +18,10 @@ game_state = GameState.on
 
 
 def inputs(prompt):
-    print('input')
     if prompt == Command.look.name:
         pass
     else:
-        print(' is confused and doesn\'t know what do')
+        print(player.name)
 
 
 def main_loop():

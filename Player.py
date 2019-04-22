@@ -15,6 +15,7 @@ class Player:
         self.strength = 1
         self.dex = 1
         self.bag = Inventory()
+        self.prompt = ''
 
     def roll_stats(self):
         # roll twice, use highest roll as stat
@@ -36,3 +37,6 @@ class Player:
         self.dex = dex
 
         return self.life, self.strength, self.dex
+
+    def look(self):
+        print(self.name + ' looks around the room')
