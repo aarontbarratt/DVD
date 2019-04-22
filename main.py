@@ -1,4 +1,5 @@
 from enum import Enum
+from player import Player
 
 
 class GameState(Enum):
@@ -6,37 +7,29 @@ class GameState(Enum):
     off = 0
 
 
-class StoryState(Enum):
-    first_spawn = 0
-    spawned = 0
-
-
-class Commands(Enum):
+class Command(Enum):
     look = 0
     walk = 1
 
 
-class GameLogic:
-
-    def __init__(self, player_command):
-        self.input = str(player_command).lower
-
-    def route_action(self):
-        if self.input == Commands.look:
-            print('player looks around')
-        if self.input == Commands.walk:
-            print('player walks around')
+player_name = input()
+player = Player(player_name.lower)
+game_state = GameState.on
 
 
-def main():
-    game_state = GameState.on
-    story_state = StoryState.first_spawn
+def inputs(prompt):
+    print('input')
+    if prompt == Command.look.name:
+        pass
+    else:
+        print(' is confused and doesn\'t know what do')
 
+
+def main_loop():
     while game_state == GameState.on:
-        if story_state == StoryState.first_spawn:
-            print('You spawn, dazed and confused')
         player_input = input()
-        GameLogic(player_input)
+        inputs(player_input)
 
 
-main()
+main_loop()
+
