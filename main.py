@@ -1,4 +1,5 @@
 from player import Player
+from enum import Enum
 
 
 aaron = Player('aaron')
