@@ -25,7 +25,8 @@ def inputs(prompt):
         player.look()
     elif prompt == Command.exit.name:
         print('Goodbye! Thank you for playing.')
-        exit()
+        global game_state
+        game_state = GameState.off
     elif prompt == Command.help.name:
         for command_ in Command:
             print(command_.name)
@@ -40,6 +41,8 @@ def main_loop():
         if player_state == player_state.spawned:
             player_input = input()
             inputs(player_input)
+    else:
+        print('mainloop broken')
 
 
 # set the game state to on so that the main loop will continue to run

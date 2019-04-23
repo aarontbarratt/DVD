@@ -1,4 +1,3 @@
-
 class Inventory:
 
     def __init__(self, inventory_space=10):
@@ -13,4 +12,4 @@ class Slot:
 
     def __init__(self, number):
         self.name = number
-        self.item = None    # this will be used as the item object later
+        self.item = None  # this will be used as the item object later
