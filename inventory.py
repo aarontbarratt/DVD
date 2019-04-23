@@ -1,16 +1,20 @@
+from item import Item
+
 
 class Inventory:
 
-    def __init__(self, inventory_space=10):
+    def __init__(self):
         self.slots = []
-        self.inventory_space = inventory_space
 
-        for _x in range(0, self.inventory_space):
-            self.slots.append(Slot(_x))
+    def add_item(self, name, description):
+        self.slots.append(Item(str(name).lower(), str(description).lower()))
+
+    def get_items(self):
+        for item in self.slots:
+            print(str(item.quantity) + 'x : ' + item.name.title() + ', ' + item.description)
 
 
-class Slot:
-
-    def __init__(self, number):
-        self.name = number
-        self.item = None    # this will be used as the item object later
+bag = Inventory()
+bag.add_item('key', 'a key for a door')
+bag.add_item('umbrella', 'under my um-ber-ella')
+bag.get_items()
