@@ -16,6 +16,7 @@ class Player:
         self.dex = 1
         self.bag = Inventory()
         self.prompt = ''
+        self.location = ''
 
     def roll_stats(self):
         # roll twice, use highest roll as stat
@@ -40,3 +41,6 @@ class Player:
 
     def look(self):
         print(self.name + ' looks around the room')
+
+    def who_am_i(self):
+        print('My name is ' + self.name.title() + ', I think...')
