@@ -41,3 +41,6 @@ class Player:
 
     def look(self):
         print(self.name + ' looks around the room')
+
+    def who_am_i(self):
+        print('My name is ' + self.name.title() + ', I think...')

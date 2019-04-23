@@ -15,20 +15,31 @@ class PlayerState(Enum):
 class Command(Enum):
     look = 0
     walk = 1
+    who_am_i = 2
     help = 1000
     exit = 1001
 
 
 def inputs(prompt):
+    prompt = prompt.replace(' ', '_')
+
+    def print_commands(command_name, string):
+        print(command_name.name.title() + ' > ' + string)
+
     if prompt == Command.look.name:
         player.look()
+    if prompt == Command.who_am_i.name:
+        player.who_am_i()
     elif prompt == Command.exit.name:
         print('Goodbye! Thank you for playing.')
         global game_state
         game_state = GameState.off
     elif prompt == Command.help.name:
-        for command_ in Command:
-            print(command_.name)
+        for command in Command:
+            if command == Command.look:
+                print_commands(command, 'Look around the room to observe your surroundings.')
+            elif command == Command.help:
+                print_commands(command, 'Lists all commands')
     else:
         print(player.name + ' does not know what ' + '"' + str(prompt) + '"' + ' means')
 
@@ -48,13 +59,16 @@ def main_loop():
 game_state = GameState.on
 
 # first text the player sees
-print('You wake up in a room that looks your grandma\'s mayo jar, and smells like grandma... \n...\n...\n...\nYou'
-      ' scratch your head and attempt to remember your name. Your name is:', end=' ')
+print('You wake up in a room that looks your grandma\'s mayo jar, and smells like grandma...\nYou scratch your head '
+      'and attempt to remember your name.\nYour name is:', end=' ')
 # get player name and create player class with it
 player_name = input()
 player = Player(player_name.lower().strip())
 
 # set player status to spawned
 player_state = PlayerState.spawned
+
+print('You check your bag and write down your name on a piece of paper. '
+      '' + " ".join(player.name.upper().replace(' ', '')) + '.')
 
 main_loop()
