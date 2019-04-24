@@ -29,7 +29,7 @@ def inputs(prompt):
 
     if prompt == Command.look.name:
         player.look()
-    if prompt == Command.who_am_i.name:
+    elif prompt == Command.who_am_i.name:
         player.who_am_i()
     elif prompt == Command.exit.name:
         print('Goodbye! Thank you for playing.')
