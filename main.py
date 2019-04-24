@@ -1,4 +1,5 @@
 from enum import Enum
+
 from player import Player
 
 
@@ -63,12 +64,15 @@ print('You wake up in a room that looks your grandma\'s mayo jar, and smells lik
       'and attempt to remember your name.\nYour name is:', end=' ')
 # get player name and create player class with it
 player_name = input()
+player_name_note = " ".join(player_name.upper().replace(' ', ''))
 player = Player(player_name.lower().strip())
 
 # set player status to spawned
 player_state = PlayerState.spawned
 
 print('You check your bag and write down your name on a piece of paper. '
-      '' + " ".join(player.name.upper().replace(' ', '')) + '.')
+      '' + player_name_note + '.')
+
+player.bag.add_item(name='Note', description='A note with the players name written on it', value=player_name_note)
 
 main_loop()
