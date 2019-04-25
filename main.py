@@ -21,7 +21,7 @@ class Command(Enum):
     exit = 1001
 
 
-def inputs(prompt):
+def player_command(prompt):
     prompt = prompt.replace(' ', '_')
 
     def print_commands(command_name, string):
@@ -41,6 +41,8 @@ def inputs(prompt):
                 print_commands(command, 'Look around the room to observe your surroundings.')
             elif command == Command.help:
                 print_commands(command, 'Lists all commands')
+            else:
+                print_commands(command, 'ERROR: NO HELP DESCRIPTION')
     else:
         print(player.name + ' does not know what ' + '"' + str(prompt) + '"' + ' means')
 
@@ -51,7 +53,7 @@ def main_loop():
             print('you\'ve broken something')
         if player_state == player_state.spawned:
             player_input = input()
-            inputs(player_input)
+            player_command(player_input)
     else:
         print('mainloop broken')
 
