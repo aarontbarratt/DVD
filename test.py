@@ -10,13 +10,13 @@ class Map:
         self.create_rooms()
 
     def create_rooms(self):
-        self.array[0][0] = self.get_highest_room_value() + 1
-        self.array[1][0] = self.get_highest_room_value() + 1
-        self.array[0][1] = self.get_highest_room_value() + 1
-        self.array[4][4] = self.get_highest_room_value() + 1
+        self.add_room(0, 0)
+        self.add_room(0, 1)
+        self.add_room(1, 1)
+        self.add_room(1, 2)
 
     def add_room(self, x, y):
-        self.array[y][x] = 999
+        self.array[y][x] = self.get_highest_room_value() + 1
 
     def remove_room(self, x, y):
         self.array[y][x] = 0
