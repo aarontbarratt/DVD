@@ -29,18 +29,23 @@ def player_command(prompt):
 
     if prompt == Command.look.name:
         player.look()
+
     elif prompt == Command.who_am_i.name:
         player.who_am_i()
+
     elif prompt == Command.exit.name:
         print('Goodbye! Thank you for playing.')
         global game_state
         game_state = GameState.off
+
     elif prompt == Command.help.name:
         for command in Command:
             if command == Command.look:
                 print_commands(command, 'Look around the room to observe your surroundings.')
+
             elif command == Command.help:
                 print_commands(command, 'Lists all commands')
+
             else:
                 print_commands(command, 'ERROR: NO HELP DESCRIPTION')
     else:
@@ -51,9 +56,9 @@ def main_loop():
     while game_state == GameState.on:
         if player_state == PlayerState.start:
             print('you\'ve broken something')
+
         if player_state == player_state.spawned:
-            player_input = input()
-            player_command(player_input)
+            player_command(input())
     else:
         print('mainloop broken')
 

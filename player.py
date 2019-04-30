@@ -23,6 +23,7 @@ class Player:
         # current pos on map
         self.pos_x = 0
         self.pox_y = 0
+        self.pos = ''
 
         # player dice
         self.d3 = Dice(3)
