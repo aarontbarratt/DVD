@@ -14,9 +14,6 @@ class Player:
         self.strength = 1
         self.dex = 1
 
-        # roll stats
-        self.roll_stats()
-
         # create bag
         self.bag = Inventory()
 
@@ -32,6 +29,9 @@ class Player:
         self.d6 = Dice(6)
         self.d12 = Dice(12)
         self.d20 = Dice(20)
+
+        # roll stats
+        self.roll_stats()
 
     def roll_stats(self):
         # roll twice, use highest roll as stat
