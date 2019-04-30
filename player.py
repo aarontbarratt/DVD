@@ -11,12 +11,18 @@ class Player:
 
     def __init__(self, name):
         self.name = name
+
         self.life = 1
         self.strength = 1
         self.dex = 1
+        self.roll_stats()
+
         self.bag = Inventory()
+
         self.prompt = ''
-        self.location = ''
+
+        self.pos_x = 0
+        self.pox_y = 0
 
     def roll_stats(self):
         # roll twice, use highest roll as stat
