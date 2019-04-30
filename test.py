@@ -54,11 +54,18 @@ class Map:
     def get_highest_room_value(self):
         return max(max(x) for x in self.array)
 
+    def get_lowest_room_value(self):
+        return min(min(x) for x in self.array)
 
-aaron = Player('Aaron')
-stats = aaron.get_stats()
-print(stats)
 
-house = Map('Lair')
-house.check_map()
-house.check_connected(aaron.pos_x, aaron.pos_x)
+player = Player('Aaron')
+player.get_stats()
+
+world = Map('INVU')
+world.check_map()
+
+world.check_connected(player.pos_x, player.pox_y)
+
+# move players y_pos
+player.pos_y = 1
+world.check_connected(player.pos_y, player.pox_y)
