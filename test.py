@@ -10,10 +10,16 @@ class Map:
         self.create_rooms()
 
     def create_rooms(self):
-        self.array[0][0] = 1
-        self.array[1][0] = 2
-        self.array[0][1] = 3
-        self.array[4][4] = 5
+        self.array[0][0] = self.get_highest_room_value() + 1
+        self.array[1][0] = self.get_highest_room_value() + 1
+        self.array[0][1] = self.get_highest_room_value() + 1
+        self.array[4][4] = self.get_highest_room_value() + 1
+
+    def add_room(self, x, y):
+        self.array[y][x] = 999
+
+    def remove_room(self, x, y):
+        self.array[y][x] = 0
 
     def check_map(self):
         for column in self.array:
@@ -44,6 +50,9 @@ class Map:
 
         print(result)
         return result
+
+    def get_highest_room_value(self):
+        return max(max(x) for x in self.array)
 
 
 aaron = Player('Aaron')
