@@ -39,6 +39,9 @@ class Map:
                     print(row, end=' ')
             print()
 
+    def check_room(self, x, y):
+        return self.array[y][x].name
+
     def check_connected(self, x, y):
         temp = self.array
 
@@ -65,8 +68,3 @@ class Map:
         else:
             print(result)
         return result
-
-
-home = Map('home')
-home.check_map()
-home.check_connected(home.center, home.center)

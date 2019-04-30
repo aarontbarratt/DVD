@@ -1,6 +1,7 @@
 from enum import Enum
 
 from player import Player
+from world import Map
 
 
 class GameState(Enum):
@@ -69,10 +70,13 @@ game_state = GameState.on
 # first text the player sees
 print('You wake up in a room that looks your grandma\'s mayo jar, and smells like grandma...\nYou scratch your head '
       'and attempt to remember your name.\nYour name is:', end=' ')
+
 # get player name and create player class with it
 player_name = input()
 player_name_note = " ".join(player_name.upper().replace(' ', ''))
+house = Map(player_name + ' house')
 player = Player(player_name.lower().strip())
+player.set_location(house.center, house.center)
 
 # set player status to spawned
 player_state = PlayerState.spawned
@@ -81,5 +85,12 @@ print('You check your bag and write down your name on a piece of paper. '
       '' + player_name_note + '.')
 
 player.bag.add_item(name='Note', description='A note with the players name written on it', value=player_name_note)
+
+print()
+
+print("You check your map: ")
+house.check_map()
+house.check_connected(player.pos_x, player.pos_y)
+house.check_room(player.pos_x, player.pos_y)
 
 main_loop()

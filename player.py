@@ -22,7 +22,7 @@ class Player:
 
         # current pos on map
         self.pos_x = 0
-        self.pox_y = 0
+        self.pos_y = 0
         self.pos = ''
 
         # player dice
@@ -55,6 +55,13 @@ class Player:
         self.dex = dex
 
         return self.life, self.strength, self.dex
+
+    def set_location(self, x, y):
+        self.pos_x = x
+        self.pos_y = y
+
+    def get_location(self):
+        return self.pos_x, self.pos_y
 
     def look(self):
         print(self.name + ' looks around the room')
