@@ -39,11 +39,3 @@ class Room:
 
     def connect_room(self, room):
         self.connected_rooms.append(room)
-
-
-house = Map('aaron\'s house')
-house.add_room('bedroom')
-house.add_room('living room')
-house.add_room('hallway')
-rooms = house.get_rooms()
-print(rooms)

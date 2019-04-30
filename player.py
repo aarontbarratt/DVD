@@ -6,19 +6,26 @@ from inventory import Inventory
 class Player:
 
     def __init__(self, name):
-        # players name
+        # player name
         self.name = name
-
-        # inventory
-        self.bag = Inventory()
-
-        # which room the player is in, within the world
-        self.location = ''
 
         # stats
         self.life = 1
         self.strength = 1
         self.dex = 1
+
+        # roll stats
+        self.roll_stats()
+
+        # create bag
+        self.bag = Inventory()
+
+        # prompt used for player commands
+        self.prompt = ''
+
+        # current pos on map
+        self.pos_x = 0
+        self.pox_y = 0
 
         # player dice
         self.d3 = Dice(3)
@@ -28,6 +35,7 @@ class Player:
 
     def roll_stats(self):
         # roll twice, use highest roll as stat
+        #   uses players dice to roll
         self.life = self.d20.roll(2, Modes.highest)
         self.strength = self.d12.roll(2, Modes.highest)
         self.dex = self.d12.roll(2, Modes.highest)
